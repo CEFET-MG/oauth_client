@@ -3,8 +3,8 @@ from urllib.parse import quote_plus
 from django.contrib.auth.models import User
 import requests
 
-from core.settings import OAUTH_TOKEN_EXCHANGE, CLIENT_ID, CLIENT_SECRET, OAUTH_GET_USER
-from core.utils import get_basic_auth_header
+from oauth_client.settings import OAUTH_TOKEN_EXCHANGE, CLIENT_ID, CLIENT_SECRET, OAUTH_GET_USER
+from oauth_client.utils import get_basic_auth_header
 
 
 def get_or_create_user(username):

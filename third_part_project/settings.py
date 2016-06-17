@@ -37,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core'
+    'oauth_client'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -46,14 +46,13 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'core.Middleware.OauthMiddleWare',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
-    'core.OauthBackend.OauthBackend',
+    'oauth_client.OauthBackend.OauthBackend',
 )
 ROOT_URLCONF = 'third_part_project.urls'
 

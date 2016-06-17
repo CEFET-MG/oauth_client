@@ -15,10 +15,9 @@ from django.shortcuts import render, redirect
 
 
 # Create your views here.
-from core.models import OAuthLogout
-from core.settings import *
-from core.settings import get
-from core.utils import get_basic_auth_header
+from oauth_client.settings import *
+from oauth_client.settings import get
+from oauth_client.utils import get_basic_auth_header
 
 
 
@@ -45,11 +44,12 @@ def oauth_login(request):
         user=authenticate(authorization_code=authorization_code, url_redirect=get_redirect_url(request, False))
 
         login(request, user)
+        request.session.set_expiry(0) #Define que a sessão do usuário só irá expirar quando o browser fechar.
         print('SID_after:'+str(request.session.session_key))
 
         path_logout=request.build_absolute_uri(reverse(logout_view,  kwargs={'session_key': request.session.session_key}))
         data={'access_token': user.access_token, 'logout_url':path_logout}
-        response=requests.get(OAUTH_REGISTER_SESSION, params=data)
+        response=requests.post(OAUTH_REGISTER_SESSION, data=data)
 
 
 
@@ -57,18 +57,11 @@ def oauth_login(request):
     else:
         return redirect(get_url(get_redirect_url(request)))
 
-
-@login_required
-def teste(request):
-
-    return HttpResponse('Teste Sucesso! usuário logado: {0}<br><a href="http://localhost:8000/logout">logout</a>'.format(request.user))
-
 def logout_view(request, session_key):
     if session_key:
         s=SessionStore(session_key=session_key)
         s.delete()
     else:
-
         logout(request)
     return HttpResponse(status=200, content='Logout com Sucesso!')
     # if('access_token' in request.POST):

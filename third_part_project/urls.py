@@ -15,10 +15,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from core.views import *
+from third_part_project.views import teste
 
 urlpatterns = [
     url(r'^teste/', teste),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('core.urls')),
+    url(r'^', include('oauth_client.urls')),
 ]
