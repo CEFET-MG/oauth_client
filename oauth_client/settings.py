@@ -30,4 +30,9 @@ OAUTH_GET_USER = get('OAUTH_GET_USER', '{0}api/me'.format(OAUTH_URL))
 
 OAUTH_REGISTER_SESSION = get('OAUTH_REGISTER_SESSION', '{0}api/register'.format(OAUTH_URL))
 
+OAUTH_USER_ATTR_MAP = get('OAUTH_USER_ATTR_MAP', {
+    "username": "username",
+    "first_name": "first_name",
+    "last_name": "last_name"
+})
 

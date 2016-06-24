@@ -42,18 +42,17 @@ def oauth_login(request):
         authorization_code=request.GET['code']
 
         user=authenticate(authorization_code=authorization_code, url_redirect=get_redirect_url(request, False))
+        if user:
+            login(request, user)
+            request.session.set_expiry(0) #Define que a sessão do usuário só irá expirar quando o browser fechar.
+            print('SID_after:'+str(request.session.session_key))
 
-        login(request, user)
-        request.session.set_expiry(0) #Define que a sessão do usuário só irá expirar quando o browser fechar.
-        print('SID_after:'+str(request.session.session_key))
-
-        path_logout=request.build_absolute_uri(reverse(logout_view,  kwargs={'session_key': request.session.session_key}))
-        data={'access_token': user.access_token, 'logout_url':path_logout}
-        response=requests.post(OAUTH_REGISTER_SESSION, data=data)
-
-
-
-        return redirect(unquote_plus(request.GET['next']))
+            path_logout=request.build_absolute_uri(reverse(logout_view,  kwargs={'session_key': request.session.session_key}))
+            data={'access_token': user.access_token, 'logout_url':path_logout}
+            response=requests.post(OAUTH_REGISTER_SESSION, data=data)
+            return redirect(unquote_plus(request.GET['next']))
+        else:
+            return HttpResponse('Erro ao logar via oauth!')
     else:
         return redirect(get_url(get_redirect_url(request)))
 

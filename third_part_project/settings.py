@@ -52,7 +52,8 @@ MIDDLEWARE_CLASSES = (
 )
 
 AUTHENTICATION_BACKENDS = (
-    'oauth_client.OauthBackend.OauthBackend',
+    # 'oauth_client.OauthBackend.OauthBackend',
+    'third_part_project.CustomBackend.CustomBackend',
 )
 ROOT_URLCONF = 'third_part_project.urls'
 
@@ -112,4 +113,6 @@ OAUTH_URL='http://localhost:8000/'
 CLIENT_ID='y2ROmF4FwkKTiLq2vgSZvQTgX6pqjkYgEJXm4SMw'
 
 CLIENT_SECRET='KTsdPYWFRXaFOq1oQpNYUV0DmcxK2emm65A1fDQokriB3nWtMMWRRB6EG6dvwwYZYDdWUvat7yWX4czT0hm0Dd1pop5Dvkke10wqf15T1eO8xypGYa7KjMa09MtM6Fpl'
+
+
 
