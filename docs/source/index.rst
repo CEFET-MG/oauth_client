@@ -6,7 +6,7 @@
 Welcome to oauth_client's documentation!
 ========================================
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pulvinar odio in nisl tincidunt suscipit. Maecenas cursus eu leo eu accumsan. Praesent id faucibus quam, ut blandit dolor. Curabitur purus tellus, semper sed magna ut, semper tristique arcu. In sit amet eros quis odio ultrices semper ac a leo. Praesent pellentesque nibh vel pellentesque cursus. Aliquam ac neque ultricies nibh blandit laoreet. Proin viverra id justo et scelerisque. In ac enim non ante porta auctor. Proin a ex sem. Vestibulum pulvinar elementum lorem at placerat. Nullam nec est non lectus pharetra vehicula eget vitae mi. 
+Documentação para o modulo cliente OAUTH
 
 Inicie
 ==================
@@ -24,5 +24,13 @@ OAuthBackend
    :maxdepth: 2
 
    oauthbackend
+
+Constantes
+==================
+.. toctree::
+   :maxdepth: 2
+
+   constantes
+
 
 

@@ -10,7 +10,7 @@ Baixando o código do repositório
 ------------------------
 .. sourcecode:: sh
 
-    $ git clone http://asdasdasd
+    $ git clone gitlab@gitlab.ep.sgi.cefetmg.br:django/oauth_client.git
 
 Instalando o módulo
 -----------------------
