@@ -4,11 +4,15 @@ from django.contrib.auth.models import User
 import requests
 
 from oauth_client.settings import OAUTH_TOKEN_EXCHANGE, CLIENT_ID, CLIENT_SECRET, OAUTH_GET_USER, OAUTH_USER_ATTR_MAP
+from django.contrib.auth import get_user_model
+
 from oauth_client.utils import get_basic_auth_header
 
+UserModel = get_user_model()
 
 def get_or_create_user(**attr):
-    return User.objects.update_or_create(**attr)
+
+    return UserModel.objects.update_or_create(**attr)
 
 class OauthBackend(object):
 
@@ -54,6 +58,6 @@ class OauthBackend(object):
 
     def get_user(self, user_id):
         try:
-            return User.objects.get(pk=user_id)
-        except User.DoesNotExist:
+            return UserModel.objects.get(pk=user_id)
+        except UserModel.DoesNotExist:
             return None

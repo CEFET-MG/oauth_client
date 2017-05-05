@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='oauth_client',
-    version='',
+    version='0.0.1',
     packages=['oauth_client'],
     url='',
     license='',
