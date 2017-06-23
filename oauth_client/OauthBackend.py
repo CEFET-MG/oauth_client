@@ -34,7 +34,11 @@ class OauthBackend(object):
 
         if(response.status_code==200):
             access_token=response.json()['access_token']
-            user_oauth=requests.get('{0}?access_token={1}'.format(OAUTH_GET_USER, access_token)).json()
+            me=requests.get('{0}?access_token={1}'.format(OAUTH_GET_USER, access_token))
+            if me.status_code!=200:
+                print("Error api/me status code: {0}".format(me.status_code));
+                return None
+            user_oauth=me.json()
             if 'error' in user_oauth:# verifica se deu erro na hora de pegar o usuário
                 print(user_oauth['error'])
                 return None
