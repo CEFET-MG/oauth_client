@@ -22,7 +22,7 @@ class OauthBackend(object):
     def post_create(self, user):
         pass
 
-    def authenticate(self, authorization_code, url_redirect):
+    def authenticate(self, authorization_code, url_redirect, errors=[]):
 
         token_request_data = {
             'grant_type': 'authorization_code',
@@ -41,6 +41,7 @@ class OauthBackend(object):
             user_oauth=me.json()
             if 'error' in user_oauth:# verifica se deu erro na hora de pegar o usuário
                 print(user_oauth['error'])
+                errors.append(user_oauth['error'])
                 return None
 
             #Verifica se o usuário é válido antes de criar no banco da aplicação. Usado para facilitar a customização das regras de autenticação

@@ -40,8 +40,8 @@ def oauth_login(request):
     if 'code' in request.GET:
 
         authorization_code=request.GET['code']
-
-        user=authenticate(authorization_code=authorization_code, url_redirect=get_redirect_url(request, False))
+        errors=[]
+        user=authenticate(authorization_code=authorization_code, url_redirect=get_redirect_url(request, False), errors=errors)
         if user:
             login(request, user)
             request.session.set_expiry(0) #Define que a sessão do usuário só irá expirar quando o browser fechar.
@@ -50,9 +50,13 @@ def oauth_login(request):
             path_logout=request.build_absolute_uri(reverse(logout_view,  kwargs={'session_key': request.session.session_key}))
             data={'access_token': user.access_token, 'logout_url':path_logout}
             response=requests.post(OAUTH_REGISTER_SESSION, data=data)
+            if(response.status_code==200):
+                request.session['session_oauth']=response.json()['session_key']
+            else:
+                print( 'Falha ao registrar aplicação')
             return redirect(unquote_plus(request.GET['next']))
         else:
-            return HttpResponse('Erro ao logar via oauth!')
+            return HttpResponse('Erro ao logar via oauth!<br/>{0}'.format(". ".join(errors)))
     else:
         return redirect(get_url(get_redirect_url(request)))
 
@@ -61,7 +65,13 @@ def logout_view(request, session_key):
         s=SessionStore(session_key=session_key)
         s.delete()
     else:
-        logout(request)
+        if("session_oauth" in request.session):
+            session_oauth=request.session['session_oauth']
+            logout(request)
+            requests.get('{0}logout/{1}'.format(OAUTH_URL, session_oauth)) #deslogando de todas as outras Aplicações
+        else:
+            logout(request)
+
     return HttpResponse(status=200, content='Logout com Sucesso!')
     # if('access_token' in request.POST):
     #     OAuthLogout.objects.create(access_token=request.POST['access_token'])
