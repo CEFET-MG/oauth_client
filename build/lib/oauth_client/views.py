@@ -26,9 +26,8 @@ def get_url(redirect_url):
 
 def get_redirect_url(request, double_encoding=True):
     if 'next' not in request.GET:
-        next=quote_plus('/')
-    else:
-        next=quote_plus(request.GET['next'])
+        raise Http404
+    next=quote_plus(request.GET['next'])
     if double_encoding:
         next=quote_plus(next)#TODO: verificar pq é necessário codificar duas vezes para não gerar o erro Error trying to decode a non urlencoded string. Found invalid characters: {'/'} in the string:
     path_login=request.build_absolute_uri(reverse(oauth_login))
@@ -73,7 +72,7 @@ def logout_view(request, session_key):
         else:
             logout(request)
 
-    return redirect(get_url(get_redirect_url(request)))
+    return HttpResponse(status=200, content='Logout com Sucesso!')
     # if('access_token' in request.POST):
     #     OAuthLogout.objects.create(access_token=request.POST['access_token'])
     #     return HttpResponse(status=200, content='Logout com Sucesso!')

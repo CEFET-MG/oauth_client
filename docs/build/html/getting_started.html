@@ -93,6 +93,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#adicione-o-oauthbackend-em-authentication-backends">Adicione o OauthBackend em AUTHENTICATION_BACKENDS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#altere-a-url-da-pagina-de-login">Altere a URL da página de login</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configurando-as-variaveis-obrigatorias">Configurando as variáveis obrigatórias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configurando-as-variaveis-opcionais">Configurando as variáveis opcionais</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#incluindo-as-views-do-oauth-client">Incluindo  as views do oauth_client</a></li>
 </ul>
 </li>
@@ -203,6 +204,17 @@
 <span class="n">CLIENT_ID</span><span class="o">=</span><span class="s1">&#39;y2ROmF4FwkKTiLq2vgSZvsqeX6pqjkYgEJXm4SMw&#39;</span>
 
 <span class="n">CLIENT_SECRET</span><span class="o">=</span><span class="s1">&#39;KTsdPYWFRXaFOq1oQpqexxSfemm65A1fDQokriB3nWtMMWRRB6EG6dvwwYZYDdWUvat7yWX4czT0hm0Dd1pop5Dvkke10wqf15T1eO8xypGYa7KjMa09MtM6Fpl&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configurando-as-variaveis-opcionais">
+<h3>Configurando as variáveis opcionais<a class="headerlink" href="#configurando-as-variaveis-opcionais" title="Permalink to this headline">¶</a></h3>
+<p>Utilize a variavel <strong>OAUTH_USER_ATTR_MAP</strong> para mapear os atributos que são recebidos do OAUTH provider para os atributos do modelo de usuário da sua aplicação</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">OAUTH_USER_ATTR_MAP</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;usuario&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;first_name&quot;</span><span class="p">:</span> <span class="s2">&quot;primeiro_nome&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;last_name&quot;</span><span class="p">:</span> <span class="s2">&quot;ultimo_nome&quot;</span>
+    <span class="p">}</span>
 </pre></div>
 </div>
 </div>

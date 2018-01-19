@@ -64,6 +64,16 @@ Altere os valores do **CLIENT_ID** e **CLIENT_SECRET** para os da **sua aplicaç
 
     CLIENT_SECRET='KTsdPYWFRXaFOq1oQpqexxSfemm65A1fDQokriB3nWtMMWRRB6EG6dvwwYZYDdWUvat7yWX4czT0hm0Dd1pop5Dvkke10wqf15T1eO8xypGYa7KjMa09MtM6Fpl'
 
+Configurando as variáveis opcionais
+--------------------------------
+Utilize a variavel **OAUTH_USER_ATTR_MAP** para mapear os atributos que são recebidos do OAUTH provider para os atributos do modelo de usuário da sua aplicação
+::
+
+    OAUTH_USER_ATTR_MAP = {
+        "username": "usuario",
+        "first_name": "primeiro_nome",
+        "last_name": "ultimo_nome"
+        }
 Incluindo  as views do oauth_client
 -------------------------------------
 

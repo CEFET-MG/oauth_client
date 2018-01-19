@@ -16,7 +16,7 @@ def get_or_create_user(**attr):
 
 class OauthBackend(object):
 
-    def user_is_valid(self, oauth_response, erros=[]):
+    def user_is_valid(self, oauth_response):
         return True
 
     def post_create(self, user):
