@@ -20,11 +20,13 @@ Validando o usuário antes de logar no sistema
 Algumas aplicações podem precisar de validar o usuário autenticado no servidor OAuth antes de realizar o login. Pensando nisso, foi criado o método ``user_is_valid``, onde podem ser feitas validações de acordo com a resposta do Servidor Oauth, antes mesmo de logar o usuário na aplicação cliente.
 
 O método deve retornar **True** caso o usuário possa logar no sistema e **False** caso contrário
+
+Ps. Utilize a lista **errors** para enviar as mensagens de erro que serão mostradas ao usuário.
 ::
 
     class CustomBackend(OauthBackend):
 
-        def user_is_valid(self, oauth_response):
+        def user_is_valid(self, oauth_response, errors):
 
             return oauth_response['username']=='higoramp_dri'
 

@@ -1,0 +1,293 @@
+
+body {
+    background: #f0f0f0 none repeat scroll 0 0;
+    color: #000000;
+    font-family: Verdana,sans-serif;
+    line-height: 1.4;
+    margin: 0;
+}
+.container {
+    background: #ffffff none repeat scroll 0 0;
+    margin: auto;
+    min-width: 360px;
+    padding: 0;
+    text-align: left;
+    width: 960px;
+}
+header #cabecalho-cefetmg {
+    background: #004c84 url("/static/template_cefet/images/bg_cabecalho.png") no-repeat scroll right center;
+    border-bottom: 3px solid #bebebe;
+    display: flex;
+    height: 78px;
+    justify-content: space-between;
+    position: relative;
+}
+header #logo-topo {
+    padding-right: 310px;
+}
+header #logo-topo img {
+    bottom: 0;
+    max-height: 45px;
+    padding: 0 10px;
+    position: absolute;
+    top: 15px;
+}
+header #logo-sistema img {
+    bottom: 0;
+    max-height: 45px;
+    padding: 0 10px;
+    position: absolute;
+    top: 15px;
+}
+header #painel-usuario {
+    background-color: #c4d2eb;
+    border-bottom: 1px solid #c4d2eb;
+    display: table;
+    width: 100%;
+}
+header #info-usuario {
+    display: table-cell;
+    float: left;
+    font-size: 11px;
+    vertical-align: middle;
+    width: 100%;
+}
+header #info-usuario .parte1 {
+    float: left;
+    font-weight: bold;
+    max-width: 420px;
+    padding-left: 10px;
+    padding-top: 8px;
+    text-transform: uppercase;
+}
+header #info-usuario .parte2 {
+    float: right;
+    padding-right: 10px;
+    padding-top: 8px;
+    text-align: right;
+}
+header #info-usuario .parte3 {
+    float: left;
+    max-width: 420px;
+    padding-left: 10px;
+}
+header #info-usuario .parte4 {
+    float: right;
+    padding-right: 10px;
+    text-align: right;
+}
+header #menu-usuario {
+    display: table-cell;
+    padding: 2px 0;
+    width: 360px;
+}
+header #menu-usuario ul {
+    background: transparent none repeat scroll 0 0;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+header #menu-usuario li {
+    float: left;
+    margin: 2px;
+    width: 115px;
+}
+header #menu-usuario li a {
+    background: #e6ecf7 none repeat scroll 0 0;
+    color: #004c84;
+    display: block;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 4px 0 4px 25px;
+    text-decoration: none;
+}
+header #menu-usuario li a:hover {
+    background-color: #fcfdff;
+}
+header #menu-usuario li.modulos a {
+    background-image: url("/static/template_cefet/images/icone_modulos.png");
+    background-position: 5px 2px;
+    background-repeat: no-repeat;
+    background-size: 16px auto;
+}
+header #menu-usuario li.senha a {
+    background-image: url("/static/template_cefet/images/icone_senha.png");
+    background-position: 5px 2px;
+    background-repeat: no-repeat;
+    background-size: 16px auto;
+}
+header #menu-usuario li.chamado a {
+    background-image: url("/static/template_cefet/images/icone_chamado.png");
+    background-position: 5px 2px;
+    background-repeat: no-repeat;
+    background-size: 16px auto;
+}
+header #menu-usuario li.ajuda a {
+    background-image: url("/static/template_cefet/images/icone_ajuda.png");
+    background-position: 5px 2px;
+    background-repeat: no-repeat;
+    background-size: 16px auto;
+}
+header #menu-usuario li.admin a {
+    background-image: url("/static/template_cefet/images/icone_admin.png");
+    background-position: 5px 2px;
+    background-repeat: no-repeat;
+    background-size: 16px auto;
+}
+header #menu-usuario li.sair a {
+    background-image: url("/static/template_cefet/images/icone_sair.png");
+    background-position: 5px 2px;
+    background-repeat: no-repeat;
+    background-size: 16px auto;
+}
+header #menu-usuario li.logar_como a {
+    background-image: url("/static/template_cefet/images/icone_logar_como.png");
+    background-position: 5px 2px;
+    background-repeat: no-repeat;
+    background-size: 16px auto;
+}
+main #menu-cefetmg {
+    background: #e6ecf7 none repeat scroll 0 0;
+    border-color: currentcolor currentcolor #c4d2eb;
+    border-style: none none solid;
+    border-width: 0 0 1px;
+    color: #000000;
+    height: 20px;
+    margin: 0;
+    padding: 0 10px;
+    width: auto;
+}
+main #conteudo {
+    padding: 0 10px;
+}
+footer {
+    background-color: #004c84;
+    background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
+    border-top: 3px solid #bebebe;
+    color: #ffffff;
+    display: flex;
+    font-size: 11px;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+footer #rodape-informacao {
+    display: table;
+    margin: 5px 0;
+}
+footer #rodape-informacao-texto {
+    display: table-cell;
+    line-height: 1.2;
+    vertical-align: middle;
+}
+footer #logo-sgi {
+    padding-right: 40px;
+    position: relative;
+    text-align: right;
+}
+footer #logo-sgi img {
+    bottom: 0;
+    margin: auto;
+    max-height: 30px;
+    position: absolute;
+    top: 0;
+}
+@media only print {
+body {
+    background: #ffffff none repeat scroll 0 0;
+}
+header #menu-usuario {
+    display: none;
+}
+footer #logo-sgi {
+    display: none;
+}
+a[href]::after {
+    content: none !important;
+}
+}
+@media only screen and (max-width: 960px) {
+.container {
+    width: 100%;
+}
+}
+@media only screen and (max-width: 768px) {
+.container {
+    width: 100%;
+}
+header #cabecalho-cefetmg {
+    background-color: #004c84;
+    background-image: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.5));
+    display: block;
+    height: 85px;
+}
+header #logo-sistema img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+header #logo-topo img {
+    height: 20px;
+    right: 25px;
+    top: 60px;
+}
+header #menu-usuario {
+    display: block;
+    float: right;
+}
+footer {
+    display: block;
+}
+footer #logo-sgi {
+    padding-bottom: 5px;
+    padding-right: 0;
+    padding-top: 0;
+    text-align: center;
+}
+footer #logo-sgi img {
+    height: 20px;
+    position: relative;
+}
+footer #rodape-informacao {
+    width: 100%;
+}
+footer #rodape-informacao-texto {
+    text-align: center;
+}
+}
+.body-inline-content {
+    background-color: #f9f9f9;
+}
+.intro-msg {
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+}
+.cefet-color {
+    color: #0a6aa9;
+}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+}
+.g-recaptcha > div > div {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: inherit !important;
+}
+.g-recaptcha > div {
+    position: relative;
+    width: 100% !important;
+}
+.g-recaptcha > div::before {
+    content: "Carregando captcha...";
+    left: 0;
+    position: absolute;
+    top: 38%;
+}
+.g-recaptcha:empty::before {
+    content: "Não foi possivel carregar o captcha";
+}

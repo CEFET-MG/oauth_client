@@ -57,7 +57,7 @@ def oauth_login(request):
                 print( 'Falha ao registrar aplicação')
             return redirect(unquote_plus(request.GET['next']))
         else:
-            return HttpResponse('Erro ao logar via oauth!<br/>{0}'.format(". ".join(errors)))
+            return render(request, ERROR_PAGE, {"error_messages": errors})
     else:
         return redirect(get_url(get_redirect_url(request)))
 

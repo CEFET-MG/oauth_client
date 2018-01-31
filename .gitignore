@@ -2,3 +2,4 @@ __pycache__
 *.pyc
 */*.pyc
 third_part_project
+docs/build/

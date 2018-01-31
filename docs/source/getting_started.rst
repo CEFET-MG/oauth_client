@@ -52,6 +52,13 @@ Altere a URL da página de login
 
     LOGIN_URL = '/oauth/login'
 
+Altere a URL da página de erro padrão
+--------------------------------
+
+É possivel criar uma página de erro customizada para sua aplicação. Utilize a variável **error_messages** para acessar as mensagens de erro
+::
+
+    ERROR_PAGE = 'error_page2.html'
 Configurando as variáveis obrigatórias
 --------------------------------
 

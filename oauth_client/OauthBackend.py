@@ -45,7 +45,7 @@ class OauthBackend(object):
                 return None
 
             #Verifica se o usuário é válido antes de criar no banco da aplicação. Usado para facilitar a customização das regras de autenticação
-            if self.user_is_valid(user_oauth):
+            if self.user_is_valid(user_oauth, errors):
                 #Faz o mapeamento entre os atributos do servidor de autenticação e o modelo usuário na aplicação
                 attr = {k: user_oauth[v] for k, v in OAUTH_USER_ATTR_MAP.items()}
 
