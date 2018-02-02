@@ -152,9 +152,10 @@
 <h3>Validando o usuário antes de logar no sistema<a class="headerlink" href="#validando-o-usuario-antes-de-logar-no-sistema" title="Permalink to this headline">¶</a></h3>
 <p>Algumas aplicações podem precisar de validar o usuário autenticado no servidor OAuth antes de realizar o login. Pensando nisso, foi criado o método <code class="docutils literal"><span class="pre">user_is_valid</span></code>, onde podem ser feitas validações de acordo com a resposta do Servidor Oauth, antes mesmo de logar o usuário na aplicação cliente.</p>
 <p>O método deve retornar <strong>True</strong> caso o usuário possa logar no sistema e <strong>False</strong> caso contrário</p>
+<p>Ps. Utilize a lista <strong>errors</strong> para enviar as mensagens de erro que serão mostradas ao usuário.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomBackend</span><span class="p">(</span><span class="n">OauthBackend</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">user_is_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">oauth_response</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">user_is_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">oauth_response</span><span class="p">,</span> <span class="n">errors</span><span class="p">):</span>
 
         <span class="k">return</span> <span class="n">oauth_response</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;higoramp_dri&#39;</span>
 </pre></div>

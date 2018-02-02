@@ -52,6 +52,13 @@ Altere a URL da página de login
 
     LOGIN_URL = '/oauth/login'
 
+Altere a URL da página de erro padrão
+--------------------------------
+
+É possivel criar uma página de erro customizada para sua aplicação. Utilize a variável **error_messages** para acessar as mensagens de erro
+::
+
+    ERROR_PAGE = 'error_page2.html'
 Configurando as variáveis obrigatórias
 --------------------------------
 
@@ -74,6 +81,21 @@ Utilize a variavel **OAUTH_USER_ATTR_MAP** para mapear os atributos que são rec
         "first_name": "primeiro_nome",
         "last_name": "ultimo_nome"
         }
+
+
+Pode-se utilizar a variavel **OAUTH_LOOKUP_USER_FIELD** para definir qual o atributo será utilizado para procurar um usuário já existente na base. o valor **default** é **username**.
+::
+
+    OAUTH_USER_ATTR_MAP = {
+        "cpf": "username",
+        "primeiro_nome": "first_name",
+        "ultimo_nome": "last_name"
+        }
+    OAUTH_LOOKUP_USER_FIELD = "cpf"
+
+**Atenção**: caso não seja mapeado o valor de **username** e não seja alterado o valor de **OAUTH_LOOKUP_USER_FIELD** será utilizado o primeiro atributo do mapeamento para buscar o usuário no banco.
+
+
 Incluindo  as views do oauth_client
 -------------------------------------
 
