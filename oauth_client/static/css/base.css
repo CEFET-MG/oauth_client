@@ -15,7 +15,7 @@ body {
     width: 960px;
 }
 header #cabecalho-cefetmg {
-    background: #004c84 url("/static/template_cefet/images/bg_cabecalho.png") no-repeat scroll right center;
+    background: #004c84 url("https://iu.cefetmg.br/static/template_cefet/images/bg_cabecalho.png") no-repeat scroll right center;
     border-bottom: 3px solid #bebebe;
     display: flex;
     height: 78px;
