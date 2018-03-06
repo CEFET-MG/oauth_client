@@ -2,21 +2,25 @@ from urllib.parse import quote_plus
 
 from django.contrib.auth.models import User
 import requests
+from django.core.exceptions import ImproperlyConfigured
 
-from oauth_client.settings import OAUTH_TOKEN_EXCHANGE, CLIENT_ID, CLIENT_SECRET, OAUTH_GET_USER, OAUTH_USER_ATTR_MAP
+from oauth_client.settings import OAUTH_TOKEN_EXCHANGE, CLIENT_ID, CLIENT_SECRET, OAUTH_GET_USER, OAUTH_USER_ATTR_MAP, \
+    OAUTH_LOOKUP_USER_FIELD
 from django.contrib.auth import get_user_model
 
 from oauth_client.utils import get_basic_auth_header
 
 UserModel = get_user_model()
 
-def get_or_create_user(**attr):
+def get_or_create_user(lookup_field, **attr):
 
-    return UserModel.objects.update_or_create(**attr)
+    lookup = {lookup_field: attr[lookup_field]}
+
+    return UserModel.objects.update_or_create(defaults=attr, **lookup)
 
 class OauthBackend(object):
 
-    def user_is_valid(self, oauth_response):
+    def user_is_valid(self, oauth_response, erros=[]):
         return True
 
     def post_create(self, user):
@@ -45,12 +49,14 @@ class OauthBackend(object):
                 return None
 
             #Verifica se o usuário é válido antes de criar no banco da aplicação. Usado para facilitar a customização das regras de autenticação
-            if self.user_is_valid(user_oauth):
+            if self.user_is_valid(user_oauth, errors):
                 #Faz o mapeamento entre os atributos do servidor de autenticação e o modelo usuário na aplicação
                 attr = {k: user_oauth[v] for k, v in OAUTH_USER_ATTR_MAP.items()}
+                #verifica qual o atributo deve ser usado para procurar o usuário correspondente
+                if OAUTH_LOOKUP_USER_FIELD  not in attr:
+                    raise ImproperlyConfigured('Cannot find OAUTH_LOOKUP_USER_FIELD in user map attributes')
 
-                print(attr)
-                user=get_or_create_user(**attr)
+                user=get_or_create_user(OAUTH_LOOKUP_USER_FIELD, **attr)
 
                 print(user_oauth)
                 user[0].backend=self

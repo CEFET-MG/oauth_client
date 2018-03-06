@@ -52,6 +52,13 @@ Altere a URL da página de login
 
     LOGIN_URL = '/oauth/login'
 
+Altere a URL da página de erro padrão
+--------------------------------
+
+É possivel criar uma página de erro customizada para sua aplicação. Utilize a variável **error_messages** para acessar as mensagens de erro
+::
+
+    ERROR_PAGE = 'error_page2.html'
 Configurando as variáveis obrigatórias
 --------------------------------
 
@@ -63,6 +70,31 @@ Altere os valores do **CLIENT_ID** e **CLIENT_SECRET** para os da **sua aplicaç
     CLIENT_ID='y2ROmF4FwkKTiLq2vgSZvsqeX6pqjkYgEJXm4SMw'
 
     CLIENT_SECRET='KTsdPYWFRXaFOq1oQpqexxSfemm65A1fDQokriB3nWtMMWRRB6EG6dvwwYZYDdWUvat7yWX4czT0hm0Dd1pop5Dvkke10wqf15T1eO8xypGYa7KjMa09MtM6Fpl'
+
+Configurando as variáveis opcionais
+--------------------------------
+Utilize a variavel **OAUTH_USER_ATTR_MAP** para mapear os atributos que são recebidos do OAUTH provider para os atributos do modelo de usuário da sua aplicação
+::
+
+    OAUTH_USER_ATTR_MAP = {
+        "username": "usuario",
+        "first_name": "primeiro_nome",
+        "last_name": "ultimo_nome"
+        }
+
+
+Pode-se utilizar a variavel **OAUTH_LOOKUP_USER_FIELD** para definir qual o atributo será utilizado para procurar um usuário já existente na base. o valor **default** é **username**.
+::
+
+    OAUTH_USER_ATTR_MAP = {
+        "cpf": "username",
+        "primeiro_nome": "first_name",
+        "ultimo_nome": "last_name"
+        }
+    OAUTH_LOOKUP_USER_FIELD = "cpf"
+
+**Atenção**: caso não seja mapeado o valor de **username** e não seja alterado o valor de **OAUTH_LOOKUP_USER_FIELD** será utilizado o primeiro atributo do mapeamento para buscar o usuário no banco.
+
 
 Incluindo  as views do oauth_client
 -------------------------------------
