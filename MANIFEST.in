@@ -1,0 +1,2 @@
+include oauth_client/templates/*.html
+include template/*.html
