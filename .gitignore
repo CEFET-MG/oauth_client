@@ -4,3 +4,4 @@ __pycache__
 third_part_project
 docs/build/
 build/
+.idea/
