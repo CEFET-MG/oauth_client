@@ -29,6 +29,8 @@ CLIENT_SECRET = get('CLIENT_SECRET', None)
 
 ERROR_PAGE = get('ERROR_PAGE', 'error_page.html')
 
+LOGOUT_PAGE =  get('LOGOUT_PAGE', None)
+
 OAUTH_GET_USER = get('OAUTH_GET_USER', '{0}api/me'.format(OAUTH_URL))
 
 OAUTH_LOOKUP_USER_FIELD = get('OAUTH_LOOKUP_USER_FIELD', 'username')

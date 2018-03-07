@@ -16,8 +16,8 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from oauth_client.settings import *
-from oauth_client.settings import get
-from oauth_client.utils import get_basic_auth_header
+
+
 
 
 
@@ -25,7 +25,7 @@ def get_url(redirect_url):
     return '{0}?client_id={1}&state=random_state_string&response_type=code&redirect_uri={url_login}'.format(OAUTH_PROVIDER_URL, CLIENT_ID, url_login=redirect_url)
 
 def get_redirect_url(request, double_encoding=True):
-    if 'next' not in request.GET:
+    if 'next' not in request.GET or not request.GET['next']:
         next=quote_plus('/')
     else:
         next=quote_plus(request.GET['next'])
@@ -73,7 +73,8 @@ def logout_view(request, session_key):
         else:
             logout(request)
 
-    return redirect(get_url(get_redirect_url(request)))
+
+    return redirect(LOGOUT_PAGE) if LOGOUT_PAGE else redirect(get_url(get_redirect_url(request)))
     # if('access_token' in request.POST):
     #     OAuthLogout.objects.create(access_token=request.POST['access_token'])
     #     return HttpResponse(status=200, content='Logout com Sucesso!')
